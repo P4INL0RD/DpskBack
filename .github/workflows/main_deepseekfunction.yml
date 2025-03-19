@@ -38,6 +38,7 @@ jobs:
         run: |
          cd backend
          pip install -r requirements.txt
+         pip install fastapi
 
       # Optional: Add step to run tests here
 
