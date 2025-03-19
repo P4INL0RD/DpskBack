@@ -8,3 +8,4 @@ python-docx
 gunicorn
 python-multipart
 pydantic
+azure-functions
