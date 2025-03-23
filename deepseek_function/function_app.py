@@ -1,10 +1,10 @@
 import azure.functions as func
 from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+import os
 from azure.ai.inference import ChatCompletionsClient
 from azure.ai.inference.models import SystemMessage, UserMessage
-from azure.core.credentials import AzureKeyCredential
-import os
+from azure.core.credentials import DefaultAzureCredentials
 import PyPDF2
 import docx
 import io
@@ -18,7 +18,7 @@ key = os.getenv("AZURE_INFERENCE_SDK_KEY")
 if not endpoint or not key or not model_name:
     raise ValueError("Faltan credenciales de Azure AI Inference en las variables de entorno.")
 
-client = ChatCompletionsClient(endpoint=endpoint, credential=AzureKeyCredential(key))
+client = ChatCompletionsClient(endpoint=endpoint, credential=DefaultAzureCredentials(key))
 
 app = FastAPI()
 
